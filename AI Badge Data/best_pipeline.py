@@ -10,7 +10,7 @@ training_features, testing_features, training_target, testing_target = \
             train_test_split(features, tpot_data['target'], random_state=None)
 
 # Average CV score on the training set was: 1.0
-exported_pipeline = DecisionTreeClassifier(criterion="entropy", max_depth=4, min_samples_leaf=17, min_samples_split=20)
+exported_pipeline = DecisionTreeClassifier(criterion="gini", max_depth=8, min_samples_leaf=12, min_samples_split=19)
 
 exported_pipeline.fit(training_features, training_target)
 results = exported_pipeline.predict(testing_features)
