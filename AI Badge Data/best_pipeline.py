@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 
 # NOTE: Make sure that the outcome column is labeled 'target' in the data file
@@ -10,7 +10,7 @@ training_features, testing_features, training_target, testing_target = \
             train_test_split(features, tpot_data['target'], random_state=None)
 
 # Average CV score on the training set was: 1.0
-exported_pipeline = RandomForestClassifier(bootstrap=False, criterion="gini", max_features=0.7500000000000001, min_samples_leaf=8, min_samples_split=19, n_estimators=100)
+exported_pipeline = GradientBoostingClassifier(learning_rate=0.01, max_depth=8, max_features=0.9000000000000001, min_samples_leaf=7, min_samples_split=6, n_estimators=100, subsample=0.35000000000000003)
 
 exported_pipeline.fit(training_features, training_target)
 results = exported_pipeline.predict(testing_features)
